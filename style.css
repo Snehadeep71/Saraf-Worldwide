@@ -1,0 +1,490 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+    color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+    background: transparent; /* Make sure the header background is transparent */
+}
+
+.logo {
+    font-size: 2rem;
+    padding: 20px;
+    color: #fff; /* Ensure the logo text color is visible on the slider background */
+}
+
+.logo span {
+    color: red;
+}
+
+.navigation {
+    position: relative;
+}
+.navigation .logo img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+
+}
+.nav-checkbox {
+    display: none;
+}
+
+.nav-button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #ffffff;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-background {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-image: radial-gradient(#4c0561, #003494);
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.navbar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #7f5a83 0%, #15598a 74%);
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.256, 1.55);
+}
+
+.nav-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+}
+
+.menu {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    padding: 20px;
+    text-transform: uppercase;
+    transition: all 0.4s;
+}
+
+.menu:hover {
+    color: #a275f7;
+    transform: translateX(10px);
+}
+
+.nav-checkbox:checked ~ .nav-background {
+    transform: scale(1.6);
+}
+
+.nav-checkbox:checked ~ .navbar {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+}
+
+.nav-icon {
+    position: relative;
+    margin-top: 35px;
+}
+
+.nav-icon,
+.nav-icon::before,
+.nav-icon::after {
+    width: 40px;
+    height: 3px;
+    background: black;
+    display: inline-block;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.nav-icon::before {
+    top: -10px;
+}
+
+.nav-icon::after {
+    top: 10px;
+}
+
+.nav-button:hover .nav-icon::before {
+    top: -12px;
+}
+
+.nav-button:hover .nav-icon::after {
+    top: 12px;
+}
+
+.nav-checkbox:checked + .nav-button .nav-icon {
+    background: transparent;
+}
+
+.nav-checkbox:checked + .nav-button .nav-icon::before {
+    top: 0;
+    transform: rotate(135deg);
+}
+
+.nav-checkbox:checked + .nav-button .nav-icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+/* Slider Styles */
+.slider {
+    height: 100vh;
+    position: relative;
+    margin-top: 0; /* Ensure no margin on top */
+}
+
+.slider .list .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.slider .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.slider .list .item::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, #000 40%, transparent);
+}
+
+.slider .list .item .content {
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+}
+
+.slider .list .item .content p:nth-child(1) {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+.slider .list .item .content h2 {
+    font-size: 100px;
+    margin: 0;
+}
+
+.slider .list .item.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+@keyframes showContent {
+    to {
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.slider .list .item.active p:nth-child(1),
+.slider .list .item.active h2,
+.slider .list .item.active p:nth-child(3) {
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 0.7s ease-in-out 1 forwards;
+}
+
+.slider .list .item.active h2 {
+    animation-delay: 1s;
+}
+
+.slider .list .item.active p:nth-child(3) {
+    animation-duration: 1.3s;
+}
+
+.arrows {
+    position: absolute;
+    top: 30%;
+    right: 50px;
+    z-index: 100;
+}
+
+.arrows button {
+    background-color: #eee5;
+    border: none;
+    font-family: monospace;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: x-large;
+    color: #eee;
+    transition: 0.5s;
+}
+
+.arrows button:hover {
+    background-color: #eee;
+    color: black;
+}
+
+.thumbnail {
+    position: absolute;
+    bottom: 50px;
+    z-index: 11;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 250px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    overflow: auto;
+    justify-content: center;
+}
+
+.thumbnail::-webkit-scrollbar {
+    width: 0;
+}
+
+.thumbnail .item {
+    width: 150px;
+    height: 220px;
+    filter: brightness(0.5);
+    transition: 0.5s;
+    flex-shrink: 0;
+}
+
+.thumbnail .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.thumbnail .item img:hover{
+  cursor: pointer;
+}
+
+.thumbnail .item.active {
+    filter: brightness(1.5);
+}
+
+.thumbnail .item .content {
+    position: absolute;
+    inset: auto 10px 10px 10px;
+}
+
+@media screen and (max-width: 678px) {
+    .thumbnail {
+        justify-content: start;
+    }
+    .slider .list .item .content h2 {
+        font-size: 60px;
+    }
+    .arrows {
+        top: 10%;
+    }
+}
+/*------------footer section css starts----------------------------*/
+footer{
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    background: linear-gradient(to right, #00093c, #2d0b00);
+    color: #fff;
+    padding: 100px 0px 30px;
+    border-top-left-radius: 125px;
+    font-size: 13px;
+    line-height: 20px;
+}
+.row{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.col{
+    flex-basis: 25%;
+    padding: 10px;
+}
+.col:nth-child(2), .col:nth-child(3){
+    flex-basis: 15%;
+}
+.logo{
+    width: 80px;
+    margin-bottom: 30px;
+}
+.col img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+.col h3{
+    width: fit-content;
+    margin-bottom: 40px;
+    position: relative;
+}
+.col p{
+    margin-bottom: 10px;
+}
+.email-id{
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 202px 0;
+
+}
+ul li{
+    list-style: none;
+    margin-bottom: 12px;
+}
+ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+form{
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+form .fa-solid{
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+form input{
+    width: 100%;
+    background: transparent;
+    color: #ccc;
+    border: 0;
+    outline: none;
+}
+form button{
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+form button .fas{
+    font-size: 1.1rem;
+    color: #fff;
+
+}
+.social-icons .fab{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #000;
+    background: #fff;
+    margin-right: 15px;
+    cursor: pointer;
+
+}
+hr{
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+}
+.copyright{
+    text-align: center;
+}
+.underline{
+    width: 100%;
+    height: 5px;
+    background: #767676;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+.underline span{
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+@keyframes moving{
+    0%{
+        left: -20px;
+    }
+    100%{
+        left: 100%;
+    }
+}
+@media (max-width:700px){
+    footer{
+        bottom: unset;
+    }
+    .col{
+        flex-basis: 25%;
+        
+    }
+    .col:nth-child(2), .col:nth-child(3){
+        flex-basis: 100%;
+    }
+}
