@@ -20,7 +20,7 @@ body{
     width: 100%;
    
     display: flex;
-    background: url('/images/project-background1.avif');
+    background: url('./images/project-background1.avif');
 }
 .sec-container{
     align-items: left;
