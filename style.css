@@ -8,7 +8,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #ffffff;
+    background-color: black;
     color: #eee;
     background-size: cover;
     background-position: center;
@@ -336,6 +336,192 @@ header {
         top: 10%;
     }
 }
+/*-----------------services section css starts here------------*/
+.service-section{
+    padding: 50px 0;
+    color: #202020;
+    background-color: black;
+}
+.service-section .service-container{
+    max-width: 1240px;
+    margin: auto;
+    
+}
+.service-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.service-section .service-header-section {
+    width: 100%; /* Ensure it takes the full width */
+    text-align: center; /* Center align the content if needed */
+}
+.service-section .service-title{
+    display: block;
+    color: #fff;
+    position: relative;
+    padding-bottom: 14px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: capitalize;
+}
+.service-section .service-title span{
+    color: #ff4500;
+}
+.service-section .service-title:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 140px;
+    height: 3px;
+    background-color: #ff4500;
+    transform: translateX(-50%);
+}
+.service-section .service-title:after{
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 45px;
+    height: 6px;
+    background-color: #ff4500;
+    transform: translateX(-50%);
+}
+.service-section .service-description{
+    
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: #6f6f71;
+    font-weight: 600;
+    text-align: center;
+}
+
+.service-section .service-column {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.service-column:hover {
+    cursor: pointer;
+}
+.service-section .service-column .single-service {
+    position: relative;
+    background-color: #24252a;
+    border-radius: 0;
+    padding: 40px 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    text-align: center;
+}
+.service-section .service-column .single-service .service-content {
+    position: relative;
+    z-index: 200;
+}
+.service-section .service-column .single-service .service-content .service-icon {
+    display: inline-block;
+    margin-bottom: 25px;
+    width: 70px;
+    height: 70px;
+    background-color: #ff4500;
+    border-radius: 5px;
+    line-height: 70px;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    transition: all 0.5s;
+}
+.service-section .service-column .single-service:hover .service-icon {
+    background-color: #fff;
+    color: #ff4500;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+.service-section .service-column .single-service .service-content .service-title-main {
+    color: #f1f1f1;
+    font-weight: 500;
+    font-size: 23px;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+.service-section .service-column .single-service .service-content .service-description-main {
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #838383;
+    transition: color 0.3s;
+}
+.service-section .service-column .single-service:hover .service-description-main {
+    color: #fff;
+}
+.service-section .service-column .single-service .service-content .learn-more {
+    color: #f1f1f1;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.service-section .service-column .single-service .service-content .learn-more:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ff4500;
+    transition: background-color 0.3s;
+}
+.service-section .single-service:hover .learn-more:after {
+    background-color: #fff;
+}
+.service-section .service-column .single-service .circle-before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(40%, -40%);
+    width: 120px;
+    height: 120px;
+    background-color: #ff4500;
+    border-radius: 50%;
+    transition: all 0.6s;
+}
+.service-section .single-service:hover .circle-before {
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Responsive styles with Flexbox and Grid */
+@media (min-width: 768px) {
+    .service-row {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* Two columns for screens >= 768px */
+        gap: 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .service-row {
+        grid-template-columns: repeat(2, 1fr); /* Three columns for screens >= 992px */
+    }
+}
+
+@media (min-width: 1200px) {
+    .service-row {
+        grid-template-columns: repeat(3, 1fr); /* Four columns for screens >= 1200px */
+    }
+}
+
+
+/*-----------------services section css ends here------------*/
 /*------------footer section css starts----------------------------*/
 footer{
     width: 100%;
