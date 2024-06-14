@@ -100,6 +100,7 @@ header {
 
 .menu {
     display: inline-block;
+    
     font-size: 20px;
     font-weight: 300;
     color: #fff;
@@ -174,6 +175,48 @@ header {
     top: 0;
     transform: rotate(-135deg);
 }
+/*-----------------------service subsection css starts here--------------------------*/
+
+.service-subsection{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 19%;
+    margin-left: 60%;
+    /* border: 2px solid black; */
+    width: auto;
+    height: auto;
+    display: none;
+    background: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add a slight shadow */
+    
+    
+}
+.service-subsection ul li a{
+    font-weight: 700;
+    
+    
+    padding: 5px 10px; 
+    color: white;
+    
+}
+.service-subsection ul li a:hover{
+    color: #a275f7;
+    transition: all 0.355s ease;
+    transform: translateX(30px);
+    
+}
+.service-subsection ul li{
+    display: block;
+    padding: 10px;
+}
+ li:hover .service-subsection{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: all 3s ease;
+}
+/*-----------------------service subsection css ends here--------------------------*/
 
 /* Slider Styles */
 .slider {
@@ -522,6 +565,188 @@ header {
 
 
 /*-----------------services section css ends here------------*/
+/*----------------------Testimonials Section css starts here-------------------------*/
+.site{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.testimonial-container{
+    max-width: 1100px;
+    width: 100%;
+    padding: 0px 30px;
+    margin: 0 auto;
+}
+.testi{
+    max-width: 900px;
+    margin: 0 auto;
+
+}
+.testi .head{
+    text-align: center;
+    margin-bottom: 60px;
+
+}
+.testi .head h3{
+    font-size: 34px;
+    font-weight: 800;
+}
+.testi .testi-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 30px 0;
+}
+/*--------------------setting the thumbnail section----------*/
+.testi .thumbnail2{
+    width: 150px;
+    height: 150px;
+    position: relative;
+    flex-shrink: 0;
+}
+.testi .thumbnail2 img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: scale(2);
+    transition: transform 0.5s;
+}
+.testi .swiper-slide-active .thumbnail2 img{
+    transform: scale(1);
+}
+.testi .thumbnail2::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100%+30px);
+    height: calc(100%+10px);
+    background-color: #fff;
+    border-radius: 33% 67% 50% 50% / 50% 14% 86% 50%;
+    z-index: -1;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 1.2); 
+    transition: border-radius 0.5s 0.3s;
+
+}
+.testi .swiper-slide-active .thumbnail2::before{
+    border-radius: 33% 67% 50% 50% / 50% 14% 86% 50%;
+}
+.testi .aside{
+    position: relative;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+.testi .aside > p{
+    position: relative;
+    font-size: 14px;
+    line-height: normal;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateX(10%);
+    transition:transform 1s, opacity 1s;
+
+}
+.testi .swiper-slide-active .aside >p{
+    transform: translateX(0);
+    opacity: 1;
+}
+.testi .aside > p::before,
+.testi .aside > p::after{
+    font-family: sans-serif;
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 1;
+    position: absolute;
+    color: #15598a;
+    height: 40px;
+    z-index: -1px;
+
+}
+.testi .aside > p::before{
+    content: open-quote;
+    top: -40px;
+    left: 10px;
+}
+.testi .aside > p::after{
+    content: close-quote;
+    right: 0;
+}
+.testi .aside .name{
+    position: relative;
+    width: fit-content;
+    line-height: 1;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: transform 1s 0.2s opacity 1s 0.3s;
+}
+.testi .swiper-slide-active .name{
+    transform: translateX(0);
+    opacity: 1;
+}
+.testi .aside .name h4{
+    font-size: 23px;
+    font-weight: 800;
+    color: #4c0561;
+    opacity: 0.8;
+}
+.testi .aside .name p{
+    font-size: 12px;
+    text-align: right;
+}
+/*----------------------slider css starts here-------------------*/
+    .testi :is(.swiper-button-next, .swiper-button-prev){
+        background-color: #6f6f71;
+        top: 35%;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 1.2); 
+    }
+    .testi :is(.swiper-button-next, .swiper-button-prev):hover{
+        background-color: #ff4500;
+    }
+    .testi :is(.swiper-button-next, .swiper-button-prev)::after{
+        font-size: 10px;
+        font-weight: 800;
+        color: #003494;
+    }
+    .testi .swiper-pagination{
+        position: relative;
+    }
+    .testi .swiper-pagination span{
+        background-color: #ff4500;
+        transition: width 0.3s;
+        opacity: 1;
+    }
+    .testi .swiper-pagination .swiper-pagination-bullet-active{
+        width: 26px;
+        border-radius: 4px;
+        background-color: #a275f7;
+    }
+/*----------------------slider css ends here-------------------*/
+@media screen and (min-width:768px){
+    .testi .testi-wrapper{
+        flex-direction: row;
+        padding: 30px 100px;
+    }
+    .testi .thumbnail2{
+        width: 200px;
+        height: 200px;
+    }
+    .testi :is(.swiper-button-next, .swiper-button-prev){
+        top: 50%;
+    }
+    .testi .swiper-slide-active .name{
+        transform: translateX(-50px);
+    }
+}
+/*----------------------Testimonials Section css ends here-------------------------*/
 /*------------footer section css starts----------------------------*/
 footer{
     width: 100%;
@@ -574,6 +799,32 @@ footer{
     margin-bottom: 202px 0;
 
 }
+/*------service subsection in footer starts here -------------------------*/
+.service-footer-subsection{
+    position: absolute;
+    font-size: 0.72rem;
+    width: auto;
+    height: auto;
+    margin-left: 7%;
+    top: 25%;
+    padding: 8px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: none;
+    background: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1.2); 
+}
+.col li:hover .service-footer-subsection{
+    display: block;
+}
+.service-footer-subsection ul li a:hover{
+    color: #a275f7;
+    transition: all 0.3s ease;
+}
+    
+
+/*------service subsection in footer ends here -------------------------*/
 ul li{
     list-style: none;
     margin-bottom: 12px;
